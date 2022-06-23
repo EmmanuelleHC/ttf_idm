@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Modules\Dashboard\Http\Controllers\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,15 +13,6 @@ use Modules\Dashboard\Http\Controllers\DashboardController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/dashboard', function (Request $request) {
     return $request->user();
-});
-
-
-Route::controller(DashboardController::class)->group(function () {
-    Route::post('login', 'login')->name('login');
-    Route::post('register', 'register');
-    Route::post('logout', 'logout');
-    Route::post('refresh', 'refresh');
-
 });
